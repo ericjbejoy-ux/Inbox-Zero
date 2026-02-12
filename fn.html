@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Student Task Dashboard</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f9;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 85%;
+    margin: auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.tabs {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: #ddd;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.tab-button.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.card {
+    background: white;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.tag {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.urgent {
+    background-color: red;
+    color: white;
+}
+
+input[type="text"] {
+    padding: 8px;
+    width: 60%;
+}
+
+button.add-btn {
+    padding: 8px 12px;
+    margin-left: 5px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>📬 Student Task Dashboard</h1>
+
+<div class="tabs">
+    <button class="tab-button active" onclick="openTab('priority', this)">Priority</button>
+    <button class="tab-button" onclick="openTab('deadlines', this)">Deadlines</button>
+    <button class="tab-button" onclick="openTab('checklist', this)">Checklist</button>
+</div>
+
+<div id="priority" class="tab-content active">
+    <h2>🔥 High Priority Emails</h2>
+
+    <div class="card">
+        <h3>Assignment Submission</h3>
+        <p>Due: 18 Feb</p>
+        <span class="tag urgent">URGENT</span>
+    </div>
+
+    <div class="card">
+        <h3>Internship Interview</h3>
+        <p>Tomorrow 10 AM</p>
+        <span class="tag urgent">IMPORTANT</span>
+    </div>
+</div>
+
+<div id="deadlines" class="tab-content">
+    <h2>⏰ Upcoming Deadlines</h2>
+
+    <div class="card">
+        <h3>DBMS Project</h3>
+        <p>20 Feb</p>
+    </div>
+
+    <div class="card">
+        <h3>Scholarship Application</h3>
+        <p>25 Feb</p>
+    </div>
+</div>
+
+<div id="checklist" class="tab-content">
+    <h2>✅ Task Checklist</h2>
+
+    <ul id="taskList">
+        <li><input type="checkbox"> Submit Lab Record</li>
+        <li><input type="checkbox"> Apply Internship</li>
+        <li><input type="checkbox"> Prepare for Midterm</li>
+    </ul>
+
+    <input type="text" id="newTask" placeholder="Add new task...">
+    <button class="add-btn" onclick="addTask()">Add</button>
+</div>
+
+</div>
+
+<script>
+function openTab(tabName, button) {
+    let contents = document.querySelectorAll(".tab-content");
+    let buttons = document.querySelectorAll(".tab-button");
+
+    contents.forEach(content => content.classList.remove("active"));
+    buttons.forEach(btn => btn.classList.remove("active"));
+
+    document.getElementById(tabName).classList.add("active");
+    button.classList.add("active");
+}
+
+function addTask() {
+    let taskInput = document.getElementById("newTask");
+    let taskValue = taskInput.value.trim();
+
+    if (taskValue !== "") {
+        let li = document.createElement("li");
+        li.innerHTML = `<input type="checkbox"> ${taskValue}`;
+        document.getElementById("taskList").appendChild(li);
+        taskInput.value = "";
+    }
+}
+</script>
+
+</body>
+</html>
