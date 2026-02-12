@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mail Task Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f6f9;
+        }
+
+        header {
+            background: #1f2937;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 22px;
+        }
+
+        .tabs {
+            display: flex;
+            background: #374151;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 12px;
+            cursor: pointer;
+            background: #374151;
+            color: white;
+            border: none;
+            outline: none;
+        }
+
+        .tab-btn:hover {
+            background: #4b5563;
+        }
+
+        .tab-btn.active {
+            background: #111827;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 20px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .card {
+            background: white;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .dropdown {
+            margin-bottom: 10px;
+        }
+
+        .dropdown button {
+            width: 100%;
+            padding: 10px;
+            text-align: left;
+            background: #e5e7eb;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .dropdown-content {
+            display: none;
+            background: white;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .checklist-item {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    Important Mail Dashboard
+</header>
+
+<div class="tabs">
+    <button class="tab-btn active" onclick="openTab('priority')">Priority</button>
+    <button class="tab-btn" onclick="openTab('deadlines')">Deadlines</button>
+    <button class="tab-btn" onclick="openTab('checklist')">Checklist</button>
+    <button class="tab-btn" onclick="openTab('categories')">Categories</button>
+</div>
+
+<!-- Priority Tab -->
+<div id="priority" class="tab-content active">
+    <div class="card">🔥 High Priority: Assignment Submission Tomorrow</div>
+    <div class="card">⚠️ Medium Priority: Workshop Registration</div>
+    <div class="card">📝 Low Priority: Newsletter</div>
+</div>
+
+<!-- Deadlines Tab -->
+<div id="deadlines" class="tab-content">
+    <div class="card">📅 15 Feb – AI Assignment</div>
+    <div class="card">📅 18 Feb – Quiz 2</div>
+    <div class="card">📅 20 Feb – Internship Application</div>
+</div>
+
+<!-- Checklist Tab -->
+<div id="checklist" class="tab-content">
+    <div class="checklist-item">
+        <input type="checkbox"> Submit DSA Assignment
+    </div>
+    <div class="checklist-item">
+        <input type="checkbox"> Register for Workshop
+    </div>
+    <div class="checklist-item">
+        <input type="checkbox"> Apply for Internship
+    </div>
+</div>
+
+<!-- Categories Tab -->
+<div id="categories" class="tab-content">
+
+    <div class="dropdown">
+        <button onclick="toggleDropdown(this)">1️⃣ Assignments</button>
+        <div class="dropdown-content">
+            DSA Assignment<br>
+            AI Project Submission
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button onclick="toggleDropdown(this)">2️⃣ Exams</button>
+        <div class="dropdown-content">
+            Mid Semester Exam<br>
+            End Semester Exam
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button onclick="toggleDropdown(this)">3️⃣ Assessments and Quizzes</button>
+        <div class="dropdown-content">
+            Quiz 1<br>
+            Coding Assessment
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button onclick="toggleDropdown(this)">4️⃣ Events</button>
+        <div class="dropdown-content">
+            Tech Fest<br>
+            Guest Lecture
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button onclick="toggleDropdown(this)">5️⃣ Internships and Job Opportunities</button>
+        <div class="dropdown-content">
+            Google Internship<br>
+            Startup Hiring Drive
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button onclick="toggleDropdown(this)">6️⃣ Workshops</button>
+        <div class="dropdown-content">
+            AI Workshop<br>
+            Resume Building Workshop
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button onclick="toggleDropdown(this)">7️⃣ Achievements</button>
+        <div class="dropdown-content">
+            Hackathon Winner<br>
+            Coding Contest Rank
+        </div>
+    </div>
+
+</div>
+
+<script>
+    function openTab(tabId) {
+        let contents = document.getElementsByClassName("tab-content");
+        let buttons = document.getElementsByClassName("tab-btn");
+
+        for (let i = 0; i < contents.length; i++) {
+            contents[i].classList.remove("active");
+            buttons[i].classList.remove("active");
+        }
+
+        document.getElementById(tabId).classList.add("active");
+
+        event.target.classList.add("active");
+    }
+
+    function toggleDropdown(button) {
+        let content = button.nextElementSibling;
+        if (content.style.display === "block") {
+            content.style.display = "none";
+        } else {
+            content.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>
